@@ -60,10 +60,9 @@ const AddBill = () => {
                 })
         }
     }, [])
-    console.log('sendReq', sendReq)
 
     const handleClick = () => {
-        navigate('/bill')
+        navigate('/dashboard')
     }
 
     const setStartDate = (date, name) => {
@@ -123,7 +122,7 @@ const AddBill = () => {
                 if (paramId) {
                     updateFormData(sendReq, paramId, (res) => {
                         if (res.message) {
-                            navigate('/bill')
+                            navigate('/dashboard')
                         } else {
                             toast.error(res.message, { position: toast.POSITION.TOP_RIGHT, });
                         }
@@ -131,7 +130,7 @@ const AddBill = () => {
                 } else {
                     createFormData(sendReq, (res) => {
                         if (res.data.acknowledged) {
-                            navigate('/bill')
+                            navigate('/dashboard')
                         } else {
                             toast.error(res.message, { position: toast.POSITION.TOP_RIGHT, });
                         }

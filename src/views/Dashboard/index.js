@@ -2,29 +2,19 @@ import {
     CButton, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow, CModal, CModalBody,
     CModalFooter, CModalHeader, CModalTitle, CForm, CFormInput, CFormLabel, CBadge, CFormTextarea
 } from '@coreui/react'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import moment from "moment";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { useDispatch } from 'react-redux';
 import { deleteBillData, getBillData } from '../../store/actions';
-import { useDownloadExcel  } from 'react-export-table-to-excel';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Index = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [state, setState] = useState([])
     let record = JSON.parse(localStorage.getItem("record"))
-    const tableRef = useRef(null);
-
-    const { onDownload } = useDownloadExcel({
-        currentTableRef: tableRef.current,
-        filename: 'Users table',
-        sheet: 'Users'
-    })
 
     useEffect(() => {
         getBillData((res) => {
@@ -44,7 +34,6 @@ const Index = () => {
 
     const onDelete = (id) => {
         deleteBillData(id, (res) => {
-            toast.error("Deleted Successfuly!!!", { position: toast.POSITION.TOP_RIGHT, });
             getBillData((res) => {
                 setState(res.data)
             })(dispatch)
@@ -61,7 +50,7 @@ const Index = () => {
 
         doc.setFontSize(15);
 
-        const title = `Company Name : ${state[0].cname}      Party Name :  ${state[0].pname}       Address : ${state[0].address}`;
+        const title = "";
         const headers = [["Bill Date", "Bill No", "Bill Amount", "Received Date", "Total Days", "Net Days", "Interest Days", "Interest Amount"]];
 
         const data = state.map(item => [moment(item.orderDate).format("DD/MM/YYYY"), item.billNo, item.billAmount, moment(item.receivedDate).format("DD/MM/YYYY"), moment(moment(item.receivedDate).format("DD.MM.YYYY"), "DD.MM.YYYY").diff(moment(moment(item.orderDate).format("DD.MM.YYYY"), "DD.MM.YYYY"), 'days'),
@@ -86,7 +75,7 @@ const Index = () => {
             <CButton color="primary" className="px-4" style={{ float: "right", marginBottom: "25px", marginRight: "10px" }} onClick={handleClick}>
                 Add New
             </CButton>
-            <CTable striped style={{ background: "white" }} ref={tableRef}>
+            <CTable striped style={{ background: "white" }}>
                 <CTableHead>
                     <CTableRow>
                         <CTableHeaderCell scope="col">Bill Date</CTableHeaderCell>
@@ -130,8 +119,6 @@ const Index = () => {
                     }
                 </CTableBody>
             </CTable>
-            <ToastContainer position={toast.POSITION.TOP_RIGHT} autoClose={5000} />
-
         </>
     )
 }
