@@ -239,8 +239,8 @@ const Index = () => {
               partyName: 'A3:D3',
               brokerName:'E3:H3',
               address:'A4:H4',
-              total:`A${finalData.length+1}:H${finalData.length+1}`,
-              totalInt:`H${finalData.length+1}`,
+              total:`A${finalData.length}:H${finalData.length}`,
+              totalInt:`H${finalData.length}`,
               tbodyRange: `A5:H${finalData.length}`,
               theadRange: 
                 headerIndexes?.length >= 1
