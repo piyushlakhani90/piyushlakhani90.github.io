@@ -1,7 +1,4 @@
-import {
-    CButton, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow, CModal, CModalBody,
-    CModalFooter, CModalHeader, CModalTitle, CForm, CFormInput, CFormLabel, CBadge, CFormTextarea
-} from '@coreui/react'
+import { CButton, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import moment from "moment";

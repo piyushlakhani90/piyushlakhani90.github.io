@@ -1,8 +1,5 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
-import {
-    CButton, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow, CModal, CModalBody,
-    CModalFooter, CModalHeader, CModalTitle, CForm, CFormInput, CFormLabel, CFormTextarea, CDatePicker, CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CFormSelect
-} from '@coreui/react'
+import { CButton, CForm, CFormInput, CFormLabel, CFormTextarea } from '@coreui/react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -44,20 +41,20 @@ const AddBill = () => {
             // let record = JSON.parse(localStorage.getItem("record"))
             // let obj = record.find((i) => i.id == paramId)
             // console.log('obj----------->', obj)
-                setBill({
-                    ...bill,
-                    sendReq: {
-                        orderDate: moment(state.orderDate).toDate(),
-                        receivedDate: moment(state.receivedDate).toDate(),
-                        billNo: state.billNo,
-                        billAmount: state.billAmount,
-                        netDays: state.netDays,
-                        cname: state.cname,
-                        bname: state.bname,
-                        pname: state.pname,
-                        address: state.address
-                    },
-                })
+            setBill({
+                ...bill,
+                sendReq: {
+                    orderDate: moment(state.orderDate).toDate(),
+                    receivedDate: moment(state.receivedDate).toDate(),
+                    billNo: state.billNo,
+                    billAmount: state.billAmount,
+                    netDays: state.netDays,
+                    cname: state.cname,
+                    bname: state.bname,
+                    pname: state.pname,
+                    address: state.address
+                },
+            })
         }
     }, [])
     console.log('sendReq', sendReq)
@@ -130,7 +127,7 @@ const AddBill = () => {
                     })(dispatch)
                 } else {
                     createFormData(sendReq, (res) => {
-                        if (res.data.acknowledged) {
+                        if (res.data) {
                             navigate('/bill')
                         } else {
                             toast.error(res.message, { position: toast.POSITION.TOP_RIGHT, });

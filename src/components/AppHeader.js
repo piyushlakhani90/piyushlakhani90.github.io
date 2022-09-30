@@ -18,7 +18,6 @@ import { AppHeaderDropdown } from './header/index'
 import { logo } from './../assets/brand/logo'
 
 const AppHeader = (props) => {
-  console.log('first----->')
   console.log('props', props)
   const dispatch = useDispatch()
   const app = useSelector((state) => state.app)

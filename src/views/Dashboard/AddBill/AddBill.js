@@ -1,8 +1,5 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
-import {
-    CButton, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow, CModal, CModalBody,
-    CModalFooter, CModalHeader, CModalTitle, CForm, CFormInput, CFormLabel, CFormTextarea, CDatePicker, CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CFormSelect
-} from '@coreui/react'
+import { CButton, CForm, CFormInput, CFormLabel, CFormTextarea } from '@coreui/react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLocation, useNavigate } from 'react-router-dom';
