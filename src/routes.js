@@ -9,7 +9,7 @@ const EditProfile = React.lazy(() => import('./authantication/EditProfile'))
 const ChangePassword = React.lazy(() => import('./authantication/ChangePassword'))
 
 const routes = [
-  { path: '/', exact: true, name: 'Home',element: Dashboard },
+  { path: '/', exact: true, name: 'Bill',element: Bill },
   // { path: '/editProfile', name: 'EditProfile', element: EditProfile },
   // { path: '/changePassword', name: 'ChangePassword', element: ChangePassword },
   { path: '/dashboard', name: 'Dashboard', element: DashboardData },

@@ -145,35 +145,7 @@ const AddBill = () => {
             <h5 style={{ marginBottom: "20px" }} >Add Bill Details</h5>
             <CForm >
                 <div className='sales_form '>
-                    <div className='row'>
-
-                        <div className='mb-12 col-sm-12 col-md-6'>
-                            <div className="mb-3 datepicker">
-                                <CFormLabel htmlFor="exampleFormControlInput1">Bill Date </CFormLabel>
-                                <div className="d-flex flex-wrap" style={{ position: "relative" }}>
-                                    <DatePicker
-                                        name="startDate"
-                                        autoComplete="off"
-                                        minDate={new Date()}
-                                        selected={sendReq.orderDate}
-                                        selectsStart
-                                        onChange={(date) => setStartDate(date, "startDate")}
-                                    />
-                                    <span className="date_icon"><img src="/img/date_icon.svg" alt="start date" /></span>
-                                </div>
-                                <span style={{ color: 'red' }}>{validator.current.message('bill date', sendReq.orderDate, 'required')}</span>
-                                {/* <CDatePicker date="2022/2/16" /> */}
-                            </div>
-                        </div>
-
-                        <div className='mb-12 col-sm-12 col-md-6'>
-                            <div className="mb-3">
-                                <CFormLabel htmlFor="exampleFormControlInput1">Bill No</CFormLabel>
-                                <CFormInput type="text" name="billNo" id="exampleFormControlInput1" placeholder="Bill No" value={sendReq.billNo} onChange={handleChange} onKeyPress={onlyNumber} />
-                            </div>
-                            <span style={{ color: 'red' }}>{validator.current.message('billNo', sendReq.billNo, 'required')}</span>
-                        </div>
-                    </div>
+                    
                     <div className='row'>
                         <div className='mb-12 col-sm-12 col-md-6'>
                             <div className="mb-3">
@@ -204,6 +176,35 @@ const AddBill = () => {
                                 <CFormTextarea name="address" value={sendReq.address} placeholder="Address" rows="3" onChange={handleChange}></CFormTextarea>
                                 <span style={{ color: 'red' }}>{validator.current.message('address', sendReq.address, 'required')}</span>
                             </div>
+                        </div>
+                    </div>
+                    <div className='row'>
+
+                        <div className='mb-12 col-sm-12 col-md-6'>
+                            <div className="mb-3 datepicker">
+                                <CFormLabel htmlFor="exampleFormControlInput1">Bill Date </CFormLabel>
+                                <div className="d-flex flex-wrap" style={{ position: "relative" }}>
+                                    <DatePicker
+                                        name="startDate"
+                                        autoComplete="off"
+                                        minDate={new Date()}
+                                        selected={sendReq.orderDate}
+                                        selectsStart
+                                        onChange={(date) => setStartDate(date, "startDate")}
+                                    />
+                                    <span className="date_icon"><img src="/img/date_icon.svg" alt="start date" /></span>
+                                </div>
+                                <span style={{ color: 'red' }}>{validator.current.message('bill date', sendReq.orderDate, 'required')}</span>
+                                {/* <CDatePicker date="2022/2/16" /> */}
+                            </div>
+                        </div>
+
+                        <div className='mb-12 col-sm-12 col-md-6'>
+                            <div className="mb-3">
+                                <CFormLabel htmlFor="exampleFormControlInput1">Bill No</CFormLabel>
+                                <CFormInput type="text" name="billNo" id="exampleFormControlInput1" placeholder="Bill No" value={sendReq.billNo} onChange={handleChange} onKeyPress={onlyNumber} />
+                            </div>
+                            <span style={{ color: 'red' }}>{validator.current.message('billNo', sendReq.billNo, 'required')}</span>
                         </div>
                     </div>
                     <div className='row'>
