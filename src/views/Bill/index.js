@@ -130,7 +130,7 @@ const Index = () => {
               console.log(url);
               const downloadAnchorNode = document.createElement("a");
               downloadAnchorNode.setAttribute("href", url);
-              downloadAnchorNode.setAttribute("download", "student_report.xlsx");
+              downloadAnchorNode.setAttribute("download", "Report.xlsx");
               downloadAnchorNode.click();
               downloadAnchorNode.remove();
             });
