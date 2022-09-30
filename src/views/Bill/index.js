@@ -367,7 +367,7 @@ const Index = () => {
             <div className='row'>
                 <div className='mb-12 col-sm-12 col-md-2'>
                     <div className="mb-3" style={{ display: "flex", flexDirection: "column" }}>
-                        <CFormLabel htmlFor="exampleFormControlTextarea1">Bill to</CFormLabel>
+                        <CFormLabel htmlFor="exampleFormControlTextarea1">Company Name</CFormLabel>
                         <CFormSelect aria-label="Default select example" name="company" value={company} onChange={handleChange}>
                             <option value="" disabled>Company Name</option>
                             {Array.from(new Set(optionArr.map(obj => obj.cname))).map(cname => {
@@ -378,7 +378,7 @@ const Index = () => {
                 </div>
                 <div className='mb-12 col-sm-12 col-md-2'>
                     <div className="mb-3" style={{ display: "flex", flexDirection: "column" }}>
-                        <CFormLabel htmlFor="exampleFormControlTextarea1">Bill to</CFormLabel>
+                        <CFormLabel htmlFor="exampleFormControlTextarea1">Party Name</CFormLabel>
                         <CFormSelect aria-label="Default select example" name="party" value={party} onChange={handleChange}>
                             <option value="" disabled>Party Name</option>
                             {Array.from(new Set(optionArr.map(obj => obj.pname))).map(pname => {
@@ -389,7 +389,7 @@ const Index = () => {
                 </div>
                 <div className='mb-12 col-sm-12 col-md-2'>
                     <div className="mb-3" style={{ display: "flex", flexDirection: "column" }}>
-                        <CFormLabel htmlFor="exampleFormControlTextarea1">Bill to</CFormLabel>
+                        <CFormLabel htmlFor="exampleFormControlTextarea1">Broker Name</CFormLabel>
                         <CFormSelect aria-label="Default select example" name="broker" value={broker} onChange={handleChange}>
                             <option value="" disabled>Broker Name</option>
                             {Array.from(new Set(optionArr.map(obj => obj.bname))).map(bname => {
