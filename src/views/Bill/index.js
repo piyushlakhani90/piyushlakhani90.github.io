@@ -1,4 +1,4 @@
-import { CButton, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow, CFormLabel, CFormSelect } from '@coreui/react'
+import { CButton, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow, CFormLabel, CFormSelect, CModal, CModalHeader, CModalTitle, CModalBody } from '@coreui/react'
 import React, { useEffect, useReducer, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import moment from "moment";
@@ -11,6 +11,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as XLSX from "xlsx";
 import * as XlsxPopulate from "xlsx-populate/browser/xlsx-populate";
+import CIcon from '@coreui/icons-react';
+import { cilWarning } from '@coreui/icons';
 
 const initialState = {
     optionArr: [],
@@ -27,7 +29,8 @@ const Index = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [state, setState] = useState([])
-    let record = JSON.parse(localStorage.getItem("record"))
+    const [delId, setDelId] = useState("")
+    const [delPopup, setDelPopup] = useState(false)
 
     useEffect(() => {
         getBillData((res) => {
@@ -47,8 +50,15 @@ const Index = () => {
     }
 
     const onDelete = (id) => {
-        deleteBillData(id, (res) => {
+        setDelId(id)
+        setDelPopup(true)
+       
+    }
+
+    const handleDelete = () => {
+        deleteBillData(delId, (res) => {
             toast.error("Deleted Successfuly!!!", { position: toast.POSITION.TOP_RIGHT, });
+            setDelPopup(false)
             getBillData((res) => {
                 setState(res.data)
             })(dispatch)
@@ -460,6 +470,28 @@ const Index = () => {
                     </CTableBody>
                 </CTable>
             </div>
+            <CModal visible={delPopup} onClose={() => setDelPopup(false)}>
+                <CModalHeader onClose={() => setDelPopup(false)}>
+                    <CModalTitle>Delete Confirmation</CModalTitle>
+                </CModalHeader>
+                <CModalBody>
+                    <div className='delete_popup'>
+                        <div className='warning_icon'>
+                            <CIcon icon={cilWarning} customClassName="nav-icon" />
+                        </div>
+
+                        <p> Are you sure? </p>
+                        <p>you want to delete this Record?</p>
+                        <div className='button'>
+                            <CButton color="secondary" onClick={() => setDelPopup(false)}> No</CButton>
+                            <CButton color="danger" onClick={handleDelete}>Yes</CButton>
+                        </div>
+                    </div>
+                </CModalBody>
+                {/* <CModalFooter style={{margin:"0 auto"}}>
+                    
+                </CModalFooter> */}
+            </CModal>
             <ToastContainer position={toast.POSITION.TOP_RIGHT} autoClose={5000} />
         </>
     )

@@ -41,3 +41,37 @@
     font-size: 18px;
     letter-spacing: 3.5px;
   }
+
+  .delete_popup {
+    .warning_icon {
+      text-align: center;
+      padding-bottom: 20px;
+  
+      svg {
+        width: 50px;
+        cursor: pointer;
+      }
+    }
+  
+    p {
+      text-align: center;
+      margin: 0;
+      font-weight: 400;
+      font-size: 16px;
+    }
+  
+    .button {
+      padding-top: 20px;
+      text-align: center;
+  
+      .btn {
+        max-width: 130px;
+        width: 100%;
+        margin: 5px 5px;
+      }
+    }
+  }
+
+  .modal-dialog {
+    max-width: 500px;
+}
