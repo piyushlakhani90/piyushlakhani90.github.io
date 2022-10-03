@@ -187,9 +187,9 @@ const AddBill = () => {
                                     <DatePicker
                                         name="startDate"
                                         autoComplete="off"
-                                        minDate={new Date()}
+                                        // minDate={new Date()}
                                         selected={sendReq.orderDate}
-                                        selectsStart
+                                        // selectsStart
                                         onChange={(date) => setStartDate(date, "startDate")}
                                     />
                                     <span className="date_icon"><img src="/img/date_icon.svg" alt="start date" /></span>
@@ -215,9 +215,9 @@ const AddBill = () => {
                                     <DatePicker
                                         name="receivedDate"
                                         autoComplete="off"
-                                        minDate={new Date()}
+                                        // minDate={new Date()}
                                         selected={sendReq.receivedDate}
-                                        selectsStart
+                                        // selectsStart
                                         onChange={(date) => setStartDate(date, "receivedDate")}
                                     />
                                     <span className="date_icon"><img src="/img/date_icon.svg" alt="start date" /></span>
