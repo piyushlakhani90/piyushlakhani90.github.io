@@ -266,6 +266,7 @@ const AddBill = () => {
                     name="startDate"
                     autoComplete="off"
                     // minDate={new Date()}
+                    dateFormat="dd/MM/yyyy"
                     selected={sendReq.orderDate}
                     selectsStart
                     onChange={(date) => setStartDate(date, "startDate")}
@@ -322,6 +323,7 @@ const AddBill = () => {
                   <DatePicker
                     name="receivedDate"
                     autoComplete="off"
+                    dateFormat="dd/MM/yyyy"
                     // minDate={new Date()}
                     selected={sendReq.receivedDate}
                     selectsStart
