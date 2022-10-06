@@ -418,7 +418,7 @@ const Index = () => {
             </div>
             <div style={{ display:"flex",justifyContent: "end" }}>
                 <CButton color="success" className="px-4" style={{  marginBottom: "25px",marginRight: "10px" }} onClick={createDownLoadData}>
-                    Preview PDF
+                    Preview File
                 </CButton>
                 <CButton color="primary" className="px-4" style={{ marginBottom: "25px", marginRight: "10px" }} onClick={handleClick}>
                     Add New
