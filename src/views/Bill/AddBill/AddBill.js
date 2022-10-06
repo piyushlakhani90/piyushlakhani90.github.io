@@ -243,8 +243,8 @@ const AddBill = () => {
             <CForm>
                 <div className="sales_form ">
                     <div className="row">
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-12 col-md-10">
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-11 col-md-10 " style={{marginRight:"10px"}}>
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     Company Name
                                 </CFormLabel>
@@ -266,8 +266,8 @@ const AddBill = () => {
                             </div>
                             <CButton color="primary" style={{ height: "40px" }} className="mt-3 ml-1" onClick={onAddCompany}>+</CButton>
                         </div>
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-12 col-md-10">
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-11 col-md-10" style={{marginRight:"10px"}}>
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     Party Name
                                 </CFormLabel>
@@ -291,8 +291,8 @@ const AddBill = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-12 col-md-10">
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-11 col-md-10" style={{marginRight:"10px"}}>
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     Broker Name
                                 </CFormLabel>
@@ -314,8 +314,8 @@ const AddBill = () => {
                             </div>
                             <CButton color="primary" style={{ height: "40px" }} className="mt-3 ml-1" onClick={onAddBroker}>+</CButton>
                         </div>
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-12 col-md-10">
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-11 col-md-10" style={{marginRight:"10px"}}>
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     {" "}
                                     Address{" "}
