@@ -537,7 +537,7 @@ const AddBill = () => {
                 <CModalBody>
                     <CForm>
                         <div className="mb-3">
-                            <CFormLabel htmlFor="exampleFormControlTextarea1">broker Name</CFormLabel>
+                            <CFormLabel htmlFor="exampleFormControlTextarea1">Broker Name</CFormLabel>
                             <CFormInput type="text" name="bname" value={sendReq.bname} placeholder="Broker Name" onChange={handleChange} />
                             <span style={{ color: 'red' }}>{validator.current.message('company', sendReq.bname, 'required')}</span>
                         </div>
@@ -555,7 +555,7 @@ const AddBill = () => {
                 <CModalBody>
                     <CForm>
                         <div className="mb-3">
-                            <CFormLabel htmlFor="exampleFormControlTextarea1">Company Name</CFormLabel>
+                            <CFormLabel htmlFor="exampleFormControlTextarea1">Address</CFormLabel>
                             <CFormTextarea
                                     name="address"
                                     value={sendReq.address}
