@@ -57,6 +57,8 @@ const AddBill = () => {
     const [broker, setBroker] = useState(false)
     const [address, setAddress] = useState(false)
 
+    const uniqueArray = (arr, props = []) => [...new Map(arr.map(entry => [props.map(k => entry[k]).join('|'), entry])).values()];
+
     useEffect(() => {
         getBillData((res) => {
             let arr = [];
@@ -69,7 +71,7 @@ const AddBill = () => {
                 brokerArr.push({ value: item.bname, label: item.bname })
                 addressArr.push({ value: item.address, label: item.address })
             });
-            setBill({ optionArr: arr, partyOption: partyArr, brokerOption: brokerArr, addressOption: addressArr })
+            setBill({ optionArr: uniqueArray(arr, ["value"]), partyOption: uniqueArray(partyArr, ["value"]), brokerOption: uniqueArray(brokerArr, ["value"]), addressOption: uniqueArray(addressArr, ["value"]) })
         })(dispatch)
     }, [])
     console.log('optionArr', optionArr,partyOption)
@@ -133,13 +135,13 @@ const AddBill = () => {
         });
     };
 
-    const handleChangeCompany = (e) => {
+    const handleChangeCompany = (e,name) => {
         console.log('e', e)
         setBill({
             ...bill,
             sendReq: {
                 ...sendReq,
-                cname: e.value,
+                [name]: e.value,
             },
         });
     };
@@ -243,8 +245,8 @@ const AddBill = () => {
             <CForm>
                 <div className="sales_form ">
                     <div className="row">
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-11 col-md-10 " style={{marginRight:"10px"}}>
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-12 col-md-10">
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     Company Name
                                 </CFormLabel>
@@ -253,7 +255,7 @@ const AddBill = () => {
                                     value={sendReq.cname && optionArr.find(e => e.value === sendReq.cname)}
                                     components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
                                     options={optionArr}
-                                    onChange={(e) => handleChangeCompany(e)}
+                                    onChange={(e) => handleChangeCompany(e,"cname")}
                                     placeholder="Search..."
                                 />
                                 <span style={{ color: "red" }}>
@@ -266,8 +268,8 @@ const AddBill = () => {
                             </div>
                             <CButton color="primary" style={{ height: "40px" }} className="mt-3 ml-1" onClick={onAddCompany}>+</CButton>
                         </div>
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-11 col-md-10" style={{marginRight:"10px"}}>
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-12 col-md-10">
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     Party Name
                                 </CFormLabel>
@@ -276,7 +278,7 @@ const AddBill = () => {
                                     value={sendReq.pname && partyOption.find(e => e.value === sendReq.pname)}
                                     components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
                                     options={partyOption}
-                                    onChange={(e) => handleChangeCompany(e)}
+                                    onChange={(e) => handleChangeCompany(e,"pname")}
                                     placeholder="Search..."
                                 />
                                 <span style={{ color: "red" }}>
@@ -291,8 +293,8 @@ const AddBill = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-11 col-md-10" style={{marginRight:"10px"}}>
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-12 col-md-10">
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     Broker Name
                                 </CFormLabel>
@@ -301,7 +303,7 @@ const AddBill = () => {
                                     value={sendReq.bname && brokerOption.find(e => e.value === sendReq.bname)}
                                     components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
                                     options={brokerOption}
-                                    onChange={(e) => handleChangeCompany(e)}
+                                    onChange={(e) => handleChangeCompany(e,"bname")}
                                     placeholder="Search..."
                                 />
                                 <span style={{ color: "red" }}>
@@ -314,8 +316,8 @@ const AddBill = () => {
                             </div>
                             <CButton color="primary" style={{ height: "40px" }} className="mt-3 ml-1" onClick={onAddBroker}>+</CButton>
                         </div>
-                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
-                            <div className="mb-3 col-sm-11 col-md-10" style={{marginRight:"10px"}}>
+                        <div className="mb-12 col-sm-12 col-md-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <div className="mb-3 col-sm-12 col-md-10">
                                 <CFormLabel htmlFor="exampleFormControlTextarea1">
                                     {" "}
                                     Address{" "}
@@ -325,7 +327,7 @@ const AddBill = () => {
                                     value={sendReq.address && addressOption.find(e => e.value === sendReq.address)}
                                     components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
                                     options={addressOption}
-                                    onChange={(e) => handleChangeCompany(e)}
+                                    onChange={(e) => handleChangeCompany(e,"address")}
                                     placeholder="Search..."
                                 />
                                 <span style={{ color: "red" }}>
@@ -537,7 +539,7 @@ const AddBill = () => {
                 <CModalBody>
                     <CForm>
                         <div className="mb-3">
-                            <CFormLabel htmlFor="exampleFormControlTextarea1">Broker Name</CFormLabel>
+                            <CFormLabel htmlFor="exampleFormControlTextarea1">broker Name</CFormLabel>
                             <CFormInput type="text" name="bname" value={sendReq.bname} placeholder="Broker Name" onChange={handleChange} />
                             <span style={{ color: 'red' }}>{validator.current.message('company', sendReq.bname, 'required')}</span>
                         </div>
@@ -555,7 +557,7 @@ const AddBill = () => {
                 <CModalBody>
                     <CForm>
                         <div className="mb-3">
-                            <CFormLabel htmlFor="exampleFormControlTextarea1">Address</CFormLabel>
+                            <CFormLabel htmlFor="exampleFormControlTextarea1">Company Name</CFormLabel>
                             <CFormTextarea
                                     name="address"
                                     value={sendReq.address}
